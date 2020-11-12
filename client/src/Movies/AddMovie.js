@@ -13,6 +13,7 @@ const initalFormValue = {
 
 
 const AddMovie = (props) => {
+    const history = useHistory()
     const [formValue, setFormValue] = useState(initalFormValue)
 
 
@@ -29,6 +30,7 @@ const AddMovie = (props) => {
        axios.post('http://localhost:5000/api/movies', formValue)
        .then(res => props.setMovieList (res.data))
        .catch(err => console.log(err))
+        history.push('/')
     }
 
     return(
@@ -58,15 +60,7 @@ const AddMovie = (props) => {
                         onChange ={handleChange}
                     />
                 </label>
-                {/* <label>Stars:
-                    <input
-                        type = 'text'
-                        name = 'stars'
-                        value = {formValue.stars}
-                        onChange ={handleChange}
-                    />
-                </label> */}
-                <button>Add New Movie</button>
+                <button>Add Movie</button>
             </form>
         </div>
     )
